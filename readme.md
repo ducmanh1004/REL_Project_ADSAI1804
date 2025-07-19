@@ -58,7 +58,6 @@ The **QLearningAgent** class is a direct implementation of the pseudocode provid
            self.epsilon: float = epsilon            # This is ε (epsilon)
    ```
 
-   *Use code with caution.*
 
 2. **Initialize Q(s, a), for all** s ∈ S⁺, a ∈ A(s), arbitrarily except that Q(terminal, ·) = 0
 
@@ -68,7 +67,6 @@ The **QLearningAgent** class is a direct implementation of the pseudocode provid
    self.q_table: Dict[str, Dict[str, float]] = defaultdict(lambda: defaultdict(float))
    ```
 
-   *Use code with caution.*
 
 3. **Loop for each episode:**
 
@@ -82,7 +80,6 @@ The **QLearningAgent** class is a direct implementation of the pseudocode provid
            solver.solve_problem(prob)
    ```
 
-   *Use code with caution.*
 
 4. **Loop for each step of episode:**
 
@@ -97,7 +94,6 @@ The **QLearningAgent** class is a direct implementation of the pseudocode provid
            # ...
    ```
 
-   *Use code with caution.*
 
 5. **State (S):** The state is a representation of the current situation. In this code, it's a string combining the problem's characteristics and the current step number.
 
@@ -107,7 +103,6 @@ The **QLearningAgent** class is a direct implementation of the pseudocode provid
    # Example state: "calculus_hard_step2"
    ```
 
-   *Use code with caution.*
 
 6. **Choose A from S using policy derived from Q (e.g., ε-greedy)**
 
@@ -125,7 +120,6 @@ The **QLearningAgent** class is a direct implementation of the pseudocode provid
        return max(available_q_values, key=available_q_values.get)
    ```
 
-   *Use code with caution.*
 
 7. **Take action A, observe R, S'**
 
@@ -137,7 +131,6 @@ The **QLearningAgent** class is a direct implementation of the pseudocode provid
      step_content = self.get_learner_response(problem, step, action, ...)
      ```
 
-     *Use code with caution.*
 
    * **Observe Reward (R):** The **"Judge"** LLM evaluates the **step\_content** and returns a numerical reward.
 
@@ -145,7 +138,6 @@ The **QLearningAgent** class is a direct implementation of the pseudocode provid
      is_correct, reward, judge_feedback = self.get_judge_evaluation(...)
      ```
 
-     *Use code with caution.*
 
    * **Observe Next State (S'):** The next state is determined by incrementing the step counter.
 
@@ -154,7 +146,7 @@ The **QLearningAgent** class is a direct implementation of the pseudocode provid
      next_state = self.agent.get_state(problem, next_step) if next_step <= self.max_steps else "terminal"
      ```
 
-     *Use code with caution.*
+
 
 8. **Q(S, A) ← Q(S, A) + α \[R + γ maxₐ Q(S', a) - Q(S, A)]**
 
@@ -181,7 +173,6 @@ The **QLearningAgent** class is a direct implementation of the pseudocode provid
        self.q_table[state][action] = new_q
    ```
 
-   *Use code with caution.*
 
 9. **S ← S'**
 
